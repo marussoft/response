@@ -137,30 +137,24 @@ class Response
         511 => 'Network Authentication Required',                             // RFC6585
     ];
 
-    
-    public function __construct()
+    public static function content(string $content = '')
     {
-    
+        return $this;
     }
     
-    public function view()
+    public function json(array $data) : self
     {
-    
-    }
-    
-    public function json()
-    {
-    
+        return $this;
     }
     
     public function header()
     {
-    
+        return $this;
     }
     
-    public function code()
+    public function code(int $code)
     {
-    
+        return $this;
     }
     
     public function send()
