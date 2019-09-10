@@ -1,0 +1,28 @@
+{
+    "name": "marussia/response",
+    "type": "library",
+    "description": "Marussia response",
+    "license": "MIT",
+    "keywords": [
+        "response"
+    ],
+    "authors": [
+        {
+            "name": "Mikhail Ilinsky",
+            "email": "mail@milinsky.ru"
+        }
+    ],
+    "support": {
+        "docs": "https://docs.marussia.org/response/"
+    },
+    "require": {
+        "php": "^7.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Marussia\\ApplicationKernel\\": "src/"
+        }
+    }
+}
+ 
