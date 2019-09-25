@@ -117,7 +117,7 @@ class Response
     {
         if (!empty($this->headers)) {
             foreach ($this->headers as $header) {
-                header(header);
+                header($header);
             }
         }
         
