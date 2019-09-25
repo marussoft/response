@@ -86,11 +86,6 @@ class Response
         $this->content = $content;
     }
     
-    public function json(array $data) : self
-    {
-        return $this;
-    }
-    
     public function header(string $header)
     {
         $this->headers[] = $header;
