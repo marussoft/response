@@ -9,13 +9,13 @@ class Response
     protected $content = '';
 
     protected $code = 200;
-
+    
     protected $headers = [];
-
+    
     protected $version = 'HTTP/1.0';
-
+    
     protected $cookies = [];
-
+    
     protected  $statusTexts = [
         100 => 'Continue',
         101 => 'Switching Protocols',
@@ -80,7 +80,7 @@ class Response
         510 => 'Not Extended',
         511 => 'Network Authentication Required',
     ];
-
+    
     const HTTP_CONTINUE = 100;
     const HTTP_SWITCHING_PROTOCOLS = 101;
     const HTTP_PROCESSING = 102;
@@ -144,30 +144,30 @@ class Response
     const HTTP_LOOP_DETECTED = 508;
     const HTTP_NOT_EXTENDED = 510;
     const HTTP_NETWORK_AUTHENTICATION_REQUIRED = 511;
-
+    
     public function content(string $content)
     {
         $this->content = $content;
     }
-
+    
     public function header(string $header)
     {
         $this->headers[] = $header;
         return $this;
     }
-
+    
     public function code(int $code)
     {
         $this->code = $code;
     }
-
+    
     public function setCookie(string $name , string $value) : Cookie
     {
         $this->cookies[$name] = Cookie::create($name, $value);
-
+        
         return $this->cookies[$name];
     }
-
+    
     public function sendCookies() : void
     {
         if (!empty($this->cookies)) {
@@ -176,7 +176,7 @@ class Response
             }
         }
     }
-
+    
     public function sendHeaders()
     {
         if (!empty($this->headers)) {
@@ -184,25 +184,19 @@ class Response
                 header($header);
             }
         }
-
+        
         header($this->version . ' ' . $this->code . ' ' . $this->statusTexts[$this->code], true, $this->code);
-
+        
         return $this;
     }
-
+    
     public function send()
     {
         $this->sendCookies();
         $this->sendHeaders();
         $this->sendContent();
     }
-
-    public function isOk()
-    {
-         return $this->code === self::HTTP_OK;
-    }
-
-
+    
     protected  function sendContent()
     {
         echo $this->content;
